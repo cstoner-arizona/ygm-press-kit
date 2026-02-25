@@ -1,0 +1,72 @@
+{
+  "enabled": true,
+  "mainFeatures": [
+    {
+      "title": "Idle Cyber Criminal Empire",
+      "description": "Create a self-sustaining cyber criminal operation from nothing but your dial-up connection that grows even when offline.",
+      "icon": "/assets/icons/win98-agent.png"
+    },
+    {
+      "title": "Historical Setting",
+      "description": "Experience the internet's most lawless era, from the gold rush of the dot-com venture capital in 1997 to the choas of Y2K and crash in 2001.",
+      "icon": "/assets/icons/win98-globe.png"
+    },
+    {
+      "title": "Botnet Progression",
+      "description": "Compromised machines join your network to turn into passive offline income to further upgrade your cyber criminal operation.",
+      "icon": "/assets/icons/win98-pc-network.png"
+    },
+    {
+      "title": "Dynamic World Progression Events",
+      "description": "The World Wide Web doesn't stay the same for long. The Y2K panic and the dot-com bubble are real historical moments that reshape the face of the internet, but open new opportunities.",
+      "icon": "/assets/icons/win98-world-wide-web.png"
+    },
+    {
+      "title": "Heat & Evasion",
+      "description": "Keep yourself one step ahead of the early cyber criminal law enforcement and cybersecurity firms as your heat meter climbs with every action performed against cyber infrustructure targets.",
+      "icon": "/assets/icons/win98-error.png"
+    },
+    {
+      "title": "Windows 98 Inspired Aesthetic",
+      "description": "A retro UI system inspired by the era. All menus and buttons feel right out of 1997 without compromising the mobile game interactivity focus.",
+      "icon": "/assets/icons/win98-paint-file.png"
+    }
+  ],
+  "gameplayFeatures": [
+    {
+      "category": "Operations",
+      "features": [
+        "Send phishing emails and brute force passwords in your humble beginnings",
+        "Upgrade and deploy worms and keyloggers to compromise your targets",
+        "Launch coordinated DDoS attacks using your botnet network",
+        "Target the dot-com startups backed with big venture capital and little security."
+      ]
+    },
+    {
+      "category": "Progression",
+      "features": [
+        "Unlock new attack vectors as your reputation in the underground hacker communities grows.",
+        "Recruit specialists that increase your operation's throughput",
+        "Upgrade from the humble beginnings of a single dial-up connection to a network of compromised servers.",
+        "Expand your botnet network to generate offline income for future upgrades."
+      ]
+    },
+    {
+      "category": "Prestige",
+      "features": [
+        "When the heat gets too much, burn your identity and start fresh.",
+        "Restart your progress with permanent bonuses from your knowledge.",
+        "With each prestige, you grow faster to where you were and excel past your previous peak.",
+        "Climb the leaderboard of the underground hacker communities to become a legend."
+      ]
+    }
+  ],
+  "technicalFeatures": [
+    "Cross-Platform iOS and Android",
+    "Offline Progression",
+    "Cloud Save Synchronization",
+    "Mobile Optimized Touch UI",
+    "Low Battery Consumption",
+    "Accessibility Options"
+  ]
+}

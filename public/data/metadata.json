@@ -1,0 +1,37 @@
+{
+  "enabled": true,
+  "gameName": "You've Got Mail!",
+  "tagline": "Connecting at 56,000 bps......... NO CARRIER. Try Again.",
+  "shortDescription": "You've Got Mail! is a mobile idler cyber criminal game set at the dawn of modern internet and e-commerce.",
+  "longDescription": "It's the year 1997 and the internet is the wild west. The average AIM user looks to the new internet as if it's magic, but you know better. Nobody is thinking about security, vulnerabilities, or how an email can cause millions in damages. What starts as simple email phishing scams and brute forcing passwords turns to botnets, infrastructure attacks, and cybercrime operations that run itself. Exploit the panic of Y2K and the venture capital poured into the dot-com bubble to keep your cyber criminal ring growing. Wrapped in the aesthetic of Windows 98 and an internet era gone, You've Got Mail! is an \"ILOVEYOU\" letter to a more simplistic time on the World Wide Web.",
+  "genre": [
+    "Strategy",
+    "Simulation",
+    "Clicker",
+    "Casual"
+  ],
+  "developer": "Dead Internet Games",
+  "publisher": "Independent",
+  "releaseDate": "06/12/1997",
+  "status": "In Development",
+  "price": {
+    "usd": 2.99,
+    "eur": 1.99,
+    "currency": "USD"
+  },
+  "ageRating": {
+    "esrb": "T",
+    "pegi": "12",
+    "content": [
+      "Simulated Crime",
+      "Mild Language"
+    ]
+  },
+  "version": "1.2.0",
+  "lastUpdated": "2025-07-11",
+  "website": "https://gaming-db.com",
+  "trailer": "/assets/videos/dial-up.mp4",
+  "logo": "/assets/images/logo.png",
+  "heroImage": "/assets/images/banner-bg.png",
+  "icon": "/assets/images/win98-computer.png"
+}

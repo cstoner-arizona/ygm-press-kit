@@ -1,0 +1,73 @@
+{
+  "enabled": true,
+  "screenshots": [
+    {
+      "url": "/assets/images/screenshots/AIM-chatroom.jpg",
+      "thumbnail": "/assets/images/screenshots/AIM-chatroom.jpg",
+      "caption": "AIM Chatroom on Windows 98",
+      "alt": "Image of computer screen showing an AIM Chatroom on a Windows 98 computer."
+    },
+    {
+      "url": "/assets/images/screenshots/geocities-screenshot.jpg",
+      "thumbnail": "/assets/images/screenshots/geocities-screenshot.jpg",
+      "caption": "User Hosted Content on the Web Platform GeoCities - 1996",
+      "alt": "Website screenshot of the homepage GeoCities from 1996"
+    },
+    {
+      "url": "/assets/images/screenshots/win98-bsod.jpg",
+      "thumbnail": "/assets/images/screenshots/win98-bsod.jpg",
+      "caption": "Blue Screen of Death on a Windows 98 Computer",
+      "alt": "A screenshot image of the blue screen of death from the windows 98 operating system."
+    },
+    {
+      "url": "/assets/images/screenshots/56k-modem.jpg",
+      "thumbnail": "/assets/images/screenshots/56k-modem.jpg",
+      "caption": "The humble beginngings of early modern internet, the 56k modem.",
+      "alt": "Photograph of a 3Com U.S. Robotics 56K Message Modem"
+    },
+    {
+      "url": "/assets/images/screenshots/3-5-floppies.jpg",
+      "thumbnail": "/assets/images/screenshots/3-5-floppies.jpg",
+      "caption": "3.5 Inch Floppy Disks. Theoretical max capacity in 1997 of 240MB, but most likely less for these.",
+      "alt": "Photograph of a box containting rows of 3.5 inch floppy disks of all different colors."
+    },
+    {
+      "url": "/assets/images/screenshots/win98-desktop.jpg",
+      "thumbnail": "/assets/images/screenshots/win98-desktop.jpg",
+      "caption": "Screenshot of the Windows98 Desktop Environment. With a memorable face in the top right corner...",
+      "alt": "Computer screenshot of the Windows 98 desktop environment with a window showing the Windows 98 logo."
+    },
+    {
+      "url": "/assets/images/screenshots/gateway-pc.jpg",
+      "thumbnail": "/assets/images/screenshots/gateway-pc.jpg",
+      "caption": "The beige PC tower from Gateway Inc., along with keyboard, mouse, speakers, and CRT monitor.",
+      "alt": "Photograph of a desk set up in a garage displaying a 90s gateway computer turning on with keyboard, mouse, speakers, and CRT monitor."
+    }
+  ],
+  "videos": [
+    {
+      "title": "Connecting at 56,000 bps...",
+      "url": "/assets/videos/dial-up.mp4",
+      "thumbnail": "/assets/images/dial-up-thumbnail.jpg",
+      "duration": "0:28",
+      "type": "trailer",
+      "featured": true
+    },
+    {
+      "title": "AOL: Kyaking Friends on Your Computer?",
+      "url": "/assets/videos/aol.mp4",
+      "thumbnail": "/assets/images/aol-thumbnail.jpg",
+      "duration": "2:00",
+      "type": "trailer",
+      "featured": false
+    },
+    {
+      "title": "ILOVEYOU",
+      "url": "/assets/videos/ILOVEYOU.mp4",
+      "thumbnail": "/assets/images/ILOVEYOU-thumbnail.jpg",
+      "duration": "2:15",
+      "type": "developer",
+      "featured": false
+    }
+  ]
+}

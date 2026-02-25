@@ -1,0 +1,41 @@
+{
+  "enabled": true,
+  "stores": [
+    {
+      "name": "Apple App Store",
+      "url": "https://www.apple.com/app-store/",
+      "price": "$2.99",
+      "currency": "USD",
+      "available": true,
+      "icon": "/assets/icons/apple-app-store.svg",
+      "primaryButton": true
+    },
+    {
+      "name": "Google Play Store",
+      "url": "https://play.google.com/store/games",
+      "price": "$2.99",
+      "currency": "USD",
+      "available": true,
+      "icon": "/assets/icons/google-play-store.svg",
+      "primaryButton": false
+    }
+  ],
+  "preOrder": {
+    "enabled": false,
+    "discount": 10,
+    "endDate": "2026-03-29"
+  },
+  "bundles": [
+    {
+      "name": "Deluxe Edition",
+      "price": "$29.99",
+      "includes": [
+        "Base Game",
+        "Digital Soundtrack",
+        "Art Book",
+        "Exclusive Wallpapers"
+      ],
+      "available": false
+    }
+  ]
+}

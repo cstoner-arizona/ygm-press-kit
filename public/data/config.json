@@ -1,0 +1,33 @@
+{
+  "enabled": true,
+  "theme": {
+    "primaryColor": "#008080",
+    "secondaryColor": "#80CCCC ",
+    "accentColor": "#00FFFF",
+    "mode": "dark"
+  },
+  "language": {
+    "default": "en",
+    "available": [
+      "en"
+    ]
+  },
+  "seo": {
+    "title": "You've Got Mail! - Official Presskit",
+    "description": "Offical presskit for You've Got Mail!, a mobile idle game set during the dawn of the modern internet and e-commerce. Build a criminal empire from a basement dial-up connection through the Y2K panic and dot-com crash of the early 2000s.",
+    "keywords": "mobile game, idle game, clicker game, Y2K, dot-com bubble, 1990s internet, cybercrime, hacking game, Windows 98, incremental game, strategy game, simulation game, retro gaming, indie game, press kit",
+    "ogImage": "/assets/images/banner-bg.jpg",
+    "twitterImage": "/assets/images/hero-bg.jpg"
+  },
+  "analytics": {
+    "enabled": false,
+    "googleAnalytics": "",
+    "gtag": ""
+  },
+  "features": {
+    "comments": false,
+    "socialShare": true,
+    "downloadPressKit": true,
+    "newsletter": false
+  }
+}
