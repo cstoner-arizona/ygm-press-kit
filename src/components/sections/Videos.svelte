@@ -1,6 +1,6 @@
 <script>
   import { t } from "../../i18n/index.js";
-  import { assetUrl } from "../../utils/assetUrl.js";
+  import { assetUrl } from "../../utils/assertUrl.js";
 
   export let media = {};
 </script>
