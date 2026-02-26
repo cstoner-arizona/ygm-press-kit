@@ -1,10 +1,11 @@
 <script>
-  import { t } from '../../i18n/index.js';
-  
+  import { t } from "../../i18n/index.js";
+  import { assertUrl } from "../../utils/assertUrl.js";
+
   export let metadata = {};
   export let social = {};
   export let config = {};
-  
+
   const currentYear = new Date().getFullYear();
 </script>
 
@@ -13,30 +14,35 @@
     <div class="footer-content">
       <!-- Game Info -->
       <div class="footer-section">
-        <h3>{metadata.gameName || 'Game Name'}</h3>
+        <h3>{metadata.gameName || "Game Name"}</h3>
         <p>{metadata.shortDescription}</p>
         {#if metadata.website}
-          <a href={metadata.website} target="_blank" rel="noopener" class="link-underline">
+          <a
+            href={metadata.website}
+            target="_blank"
+            rel="noopener"
+            class="link-underline"
+          >
             Official Website
           </a>
         {/if}
       </div>
-      
+
       <!-- Social Links -->
       {#if social?.socialLinks}
         <div class="footer-section">
           <h4>Follow Us</h4>
           <div class="social-grid">
             {#each social.socialLinks.slice(0, 6) as link}
-              <a 
-                href={link.url} 
-                target="_blank" 
+              <a
+                href={link.url}
+                target="_blank"
                 rel="noopener"
                 class="social-link hover-lift"
                 title={link.platform}
               >
                 {#if link.icon}
-                  <img src={link.icon} alt={link.platform} />
+                  <img src={assertUrl(link.icon)} alt={link.platform} />
                 {:else}
                   <span>{link.platform}</span>
                 {/if}
@@ -45,7 +51,7 @@
           </div>
         </div>
       {/if}
-      
+
       <!-- Developer Info -->
       <div class="footer-section">
         <h4>Developer</h4>
@@ -53,10 +59,13 @@
         {#if metadata.publisher && metadata.publisher !== metadata.developer}
           <p><strong>Publisher:</strong> {metadata.publisher}</p>
         {/if}
-        <p class="copyright">© {currentYear} {metadata.developer}. All rights reserved.</p>
+        <p class="copyright">
+          © {currentYear}
+          {metadata.developer}. All rights reserved.
+        </p>
       </div>
     </div>
-    
+
     <!-- Bottom Bar -->
     <div class="footer-bottom">
       <div class="footer-links">
@@ -64,9 +73,13 @@
         <a href="#terms" class="footer-link">Terms of Service</a>
         <a href="#contact" class="footer-link">Contact</a>
       </div>
-      
+
       <div class="footer-credits">
-        <p>Made with <a href="https://svelte.dev" target="_blank" rel="noopener">Svelte</a></p>
+        <p>
+          Made with <a href="https://svelte.dev" target="_blank" rel="noopener"
+            >Svelte</a
+          >
+        </p>
       </div>
     </div>
   </div>
@@ -193,20 +206,21 @@
       grid-template-columns: 1fr;
       gap: var(--spacing-xl);
     }
-    
+
     .footer-bottom {
       flex-direction: column;
       text-align: center;
       gap: var(--spacing-lg);
     }
-    
+
     .footer-links {
       justify-content: center;
     }
-    
+
     .social-grid {
       max-width: none;
       grid-template-columns: repeat(6, 1fr);
     }
   }
 </style>
+

@@ -1,6 +1,6 @@
 <script>
   import { t } from "../../i18n/index.js";
-  import { assetUrl } from "../../utils/assertUrl.js";
+  import { assertUrl } from "../../utils/assertUrl.js";
 
   export let media = {};
 </script>
@@ -19,9 +19,9 @@
               <video
                 controls
                 preload="metadata"
-                poster={assetUrl(video.thumbnail)}
+                poster={assertUrl(video.thumbnail)}
               >
-                <source src={assetUrl(video.url)} type="video/mp4" />
+                <source src={assertUrl(video.url)} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -88,4 +88,3 @@
     }
   }
 </style>
-

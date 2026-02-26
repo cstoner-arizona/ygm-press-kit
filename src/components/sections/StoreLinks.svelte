@@ -1,25 +1,28 @@
 <script>
-  import { t } from '../../i18n/index.js';
-  
+  import { t } from "../../i18n/index.js";
+  import { assertUrl } from "../../utils/assertUrl.js";
+
   export let storeLinks = {};
 </script>
 
 <section class="store-links section">
   <div class="container">
     <h2 class="section-title gradient-text text-center">Get the Game</h2>
-    
+
     {#if storeLinks.stores}
       <div class="stores-grid">
         {#each storeLinks.stores as store}
-          <a 
-            href={store.url} 
-            class="store-card glass-card hover-lift {store.primaryButton ? 'primary' : ''}"
+          <a
+            href={store.url}
+            class="store-card glass-card hover-lift {store.primaryButton
+              ? 'primary'
+              : ''}"
             target="_blank"
             rel="noopener noreferrer"
           >
             {#if store.icon}
               <div class="store-icon">
-                <img src={store.icon} alt={store.name} />
+                <img src={assertUrl(store.icon)} alt={store.name} />
               </div>
             {/if}
             <div class="store-info">
@@ -61,7 +64,11 @@
 
   .store-card.primary {
     border: 2px solid var(--primary-color);
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+    background: linear-gradient(
+      135deg,
+      rgba(99, 102, 241, 0.1),
+      rgba(139, 92, 246, 0.1)
+    );
   }
 
   .store-icon {
@@ -107,3 +114,4 @@
     transform: translateY(-4px);
   }
 </style>
+

@@ -1,6 +1,6 @@
 <script>
-  import { t } from '../../i18n/index.js';
-  
+  import { t } from "../../i18n/index.js";
+
   export let metadata = {};
 </script>
 
@@ -9,9 +9,9 @@
     <div class="game-info-content glass-panel">
       <div class="info-grid">
         <div class="description">
-          <h2>{$t('sections.overview')}</h2>
+          <h2>{$t("sections.overview")}</h2>
           <p class="long-description">{metadata.longDescription}</p>
-          
+
           {#if metadata.genre?.length > 0}
             <div class="genre-tags">
               {#each metadata.genre as genre}
@@ -20,7 +20,7 @@
             </div>
           {/if}
         </div>
-        
+
         <div class="quick-facts">
           <h3>Quick Facts</h3>
           <div class="facts-list">
@@ -30,21 +30,23 @@
                 <span class="fact-value">{metadata.developer}</span>
               </div>
             {/if}
-            
+
             {#if metadata.publisher}
               <div class="fact">
                 <span class="fact-label">Publisher</span>
                 <span class="fact-value">{metadata.publisher}</span>
               </div>
             {/if}
-            
+
             {#if metadata.releaseDate}
               <div class="fact">
                 <span class="fact-label">Release Date</span>
-                <span class="fact-value">{new Date(metadata.releaseDate).toLocaleDateString()}</span>
+                <span class="fact-value"
+                  >{new Date(metadata.releaseDate).toLocaleDateString()}</span
+                >
               </div>
             {/if}
-            
+
             {#if metadata.price}
               <div class="fact">
                 <span class="fact-label">Price</span>
@@ -133,3 +135,4 @@
     }
   }
 </style>
+

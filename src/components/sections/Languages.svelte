@@ -1,16 +1,18 @@
 <script>
-  import { t } from '../../i18n/index.js';
-  
+  import { t } from "../../i18n/index.js";
+
   export let languages = {};
 </script>
 
 <section class="languages section">
   <div class="container">
-    <h2 class="section-title gradient-text text-center">{$t('sections.languages')}</h2>
-    
+    <h2 class="section-title gradient-text text-center">
+      {$t("sections.languages")}
+    </h2>
+
     {#if languages.supportedLanguages}
       <div class="supported-languages">
-        <h3 class="subsection-title">{$t('languages.supportedLanguages')}</h3>
+        <h3 class="subsection-title">{$t("languages.supportedLanguages")}</h3>
         <div class="languages-grid">
           {#each languages.supportedLanguages as language}
             <div class="language-card glass-card hover-lift">
@@ -21,24 +23,48 @@
                   <p class="language-native">{language.nativeName}</p>
                 </div>
               </div>
-              
+
               <div class="language-features">
-                <div class="feature-item {language.fullAudio ? 'available' : 'unavailable'}">
-                  <span class="feature-icon">{language.fullAudio ? '🔊' : '🔇'}</span>
-                  <span class="feature-label">{$t('languages.fullAudio')}</span>
-                  <span class="feature-status">{language.fullAudio ? '✓' : '✗'}</span>
+                <div
+                  class="feature-item {language.fullAudio
+                    ? 'available'
+                    : 'unavailable'}"
+                >
+                  <span class="feature-icon"
+                    >{language.fullAudio ? "🔊" : "🔇"}</span
+                  >
+                  <span class="feature-label">{$t("languages.fullAudio")}</span>
+                  <span class="feature-status"
+                    >{language.fullAudio ? "✓" : "✗"}</span
+                  >
                 </div>
-                
-                <div class="feature-item {language.subtitles ? 'available' : 'unavailable'}">
-                  <span class="feature-icon">{language.subtitles ? '💬' : '🚫'}</span>
-                  <span class="feature-label">{$t('languages.subtitles')}</span>
-                  <span class="feature-status">{language.subtitles ? '✓' : '✗'}</span>
+
+                <div
+                  class="feature-item {language.subtitles
+                    ? 'available'
+                    : 'unavailable'}"
+                >
+                  <span class="feature-icon"
+                    >{language.subtitles ? "💬" : "🚫"}</span
+                  >
+                  <span class="feature-label">{$t("languages.subtitles")}</span>
+                  <span class="feature-status"
+                    >{language.subtitles ? "✓" : "✗"}</span
+                  >
                 </div>
-                
-                <div class="feature-item {language.interface ? 'available' : 'unavailable'}">
-                  <span class="feature-icon">{language.interface ? '🖥️' : '❌'}</span>
-                  <span class="feature-label">{$t('languages.interface')}</span>
-                  <span class="feature-status">{language.interface ? '✓' : '✗'}</span>
+
+                <div
+                  class="feature-item {language.interface
+                    ? 'available'
+                    : 'unavailable'}"
+                >
+                  <span class="feature-icon"
+                    >{language.interface ? "🖥️" : "❌"}</span
+                  >
+                  <span class="feature-label">{$t("languages.interface")}</span>
+                  <span class="feature-status"
+                    >{language.interface ? "✓" : "✗"}</span
+                  >
                 </div>
               </div>
             </div>
@@ -55,33 +81,43 @@
             <span class="stat-icon">📝</span>
             <div class="stat-content">
               <span class="stat-label">Text Volume</span>
-              <span class="stat-value">{languages.localizationInfo.textVolume}</span>
+              <span class="stat-value"
+                >{languages.localizationInfo.textVolume}</span
+              >
             </div>
           </div>
-          
+
           {#if languages.localizationInfo.audioHours}
             <div class="stat-item">
               <span class="stat-icon">🎙️</span>
               <div class="stat-content">
                 <span class="stat-label">Audio Hours</span>
-                <span class="stat-value">{languages.localizationInfo.audioHours}</span>
+                <span class="stat-value"
+                  >{languages.localizationInfo.audioHours}</span
+                >
               </div>
             </div>
           {/if}
-          
+
           <div class="stat-item">
             <span class="stat-icon">📅</span>
             <div class="stat-content">
               <span class="stat-label">Last Updated</span>
-              <span class="stat-value">{new Date(languages.localizationInfo.lastUpdated).toLocaleDateString()}</span>
+              <span class="stat-value"
+                >{new Date(
+                  languages.localizationInfo.lastUpdated,
+                ).toLocaleDateString()}</span
+              >
             </div>
           </div>
-          
+
           <div class="stat-item">
             <span class="stat-icon">⭐</span>
             <div class="stat-content">
               <span class="stat-label">Translation Quality</span>
-              <span class="stat-value">{languages.localizationInfo.translationQuality}</span>
+              <span class="stat-value"
+                >{languages.localizationInfo.translationQuality}</span
+              >
             </div>
           </div>
         </div>
@@ -90,24 +126,31 @@
 
     {#if languages.communityTranslations?.enabled}
       <div class="community-translations">
-        <h3 class="subsection-title">{$t('languages.communityTranslations')}</h3>
+        <h3 class="subsection-title">
+          {$t("languages.communityTranslations")}
+        </h3>
         <div class="community-info glass-panel">
           <div class="community-header">
             <div class="community-stats">
               <div class="community-stat">
-                <span class="stat-number">{languages.communityTranslations.contributorCount}</span>
+                <span class="stat-number"
+                  >{languages.communityTranslations.contributorCount}</span
+                >
                 <span class="stat-label">Contributors</span>
               </div>
               <div class="community-stat">
-                <span class="stat-number">{languages.communityTranslations.languages?.length || 0}</span>
+                <span class="stat-number"
+                  >{languages.communityTranslations.languages?.length ||
+                    0}</span
+                >
                 <span class="stat-label">Community Languages</span>
               </div>
             </div>
-            
+
             {#if languages.communityTranslations.url}
-              <a 
-                href={languages.communityTranslations.url} 
-                target="_blank" 
+              <a
+                href={languages.communityTranslations.url}
+                target="_blank"
                 rel="noopener"
                 class="community-link glass-button btn-magnetic"
               >
@@ -115,7 +158,7 @@
               </a>
             {/if}
           </div>
-          
+
           {#if languages.communityTranslations.languages}
             <div class="community-languages">
               <h4>Community Languages</h4>
@@ -128,10 +171,12 @@
               </div>
             </div>
           {/if}
-          
+
           <div class="community-platform">
             <span class="platform-label">Translation Platform:</span>
-            <span class="platform-name">{languages.communityTranslations.platform}</span>
+            <span class="platform-name"
+              >{languages.communityTranslations.platform}</span
+            >
           </div>
         </div>
       </div>
@@ -145,31 +190,42 @@
           <div class="summary-card glass-card">
             <span class="summary-icon">🌍</span>
             <div class="summary-content">
-              <span class="summary-number">{languages.supportedLanguages.length}</span>
+              <span class="summary-number"
+                >{languages.supportedLanguages.length}</span
+              >
               <span class="summary-label">Total Languages</span>
             </div>
           </div>
-          
+
           <div class="summary-card glass-card">
             <span class="summary-icon">🔊</span>
             <div class="summary-content">
-              <span class="summary-number">{languages.supportedLanguages.filter(lang => lang.fullAudio).length}</span>
+              <span class="summary-number"
+                >{languages.supportedLanguages.filter((lang) => lang.fullAudio)
+                  .length}</span
+              >
               <span class="summary-label">Full Audio</span>
             </div>
           </div>
-          
+
           <div class="summary-card glass-card">
             <span class="summary-icon">💬</span>
             <div class="summary-content">
-              <span class="summary-number">{languages.supportedLanguages.filter(lang => lang.subtitles).length}</span>
+              <span class="summary-number"
+                >{languages.supportedLanguages.filter((lang) => lang.subtitles)
+                  .length}</span
+              >
               <span class="summary-label">With Subtitles</span>
             </div>
           </div>
-          
+
           <div class="summary-card glass-card">
             <span class="summary-icon">🖥️</span>
             <div class="summary-content">
-              <span class="summary-number">{languages.supportedLanguages.filter(lang => lang.interface).length}</span>
+              <span class="summary-number"
+                >{languages.supportedLanguages.filter((lang) => lang.interface)
+                  .length}</span
+              >
               <span class="summary-label">UI Translated</span>
             </div>
           </div>
@@ -446,22 +502,23 @@
     .languages-grid {
       grid-template-columns: 1fr;
     }
-    
+
     .localization-stats {
       grid-template-columns: 1fr;
     }
-    
+
     .community-header {
       flex-direction: column;
       text-align: center;
     }
-    
+
     .community-stats {
       justify-content: center;
     }
-    
+
     .summary-grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
+

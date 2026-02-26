@@ -1,16 +1,17 @@
 <script>
-  import { t } from '../../i18n/index.js';
-  
+  import { t } from "../../i18n/index.js";
+  import { assertUrl } from "../../utils/assertUrl.js";
+
   export let social = {};
-  
+
   function formatFollowerCount(count) {
-    if (typeof count === 'string') {
+    if (typeof count === "string") {
       return count;
     }
     if (count >= 1000000) {
-      return (count / 1000000).toFixed(1) + 'M';
+      return (count / 1000000).toFixed(1) + "M";
     } else if (count >= 1000) {
-      return (count / 1000).toFixed(1) + 'K';
+      return (count / 1000).toFixed(1) + "K";
     }
     return count.toString();
   }
@@ -18,50 +19,63 @@
 
 <section class="social section">
   <div class="container">
-    <h2 class="section-title gradient-text text-center">{$t('sections.social')}</h2>
-    
+    <h2 class="section-title gradient-text text-center">
+      {$t("sections.social")}
+    </h2>
+
     {#if social.socialLinks}
       <div class="social-platforms">
-        <h3 class="subsection-title">{$t('social.followUs')}</h3>
+        <h3 class="subsection-title">{$t("social.followUs")}</h3>
         <div class="platforms-grid">
           {#each social.socialLinks as platform}
-            <a 
-              href={platform.url} 
-              target="_blank" 
+            <a
+              href={platform.url}
+              target="_blank"
               rel="noopener noreferrer"
               class="platform-card glass-card hover-lift"
             >
               <div class="platform-header">
                 {#if platform.icon}
                   <div class="platform-icon">
-                    <img src={platform.icon} alt={platform.platform} />
+                    <img
+                      src={assertUrl(platform.icon)}
+                      alt={platform.platform}
+                    />
                   </div>
                 {/if}
                 <div class="platform-info">
                   <h4 class="platform-name">{platform.platform}</h4>
-                  <p class="platform-handle">{platform.handle || platform.name}</p>
+                  <p class="platform-handle">
+                    {platform.handle || platform.name}
+                  </p>
                 </div>
               </div>
-              
+
               <div class="platform-stats">
                 {#if platform.followers}
                   <div class="stat-item">
-                    <span class="stat-number">{formatFollowerCount(platform.followers)}</span>
+                    <span class="stat-number"
+                      >{formatFollowerCount(platform.followers)}</span
+                    >
                     <span class="stat-label">Followers</span>
                   </div>
                 {:else if platform.members}
                   <div class="stat-item">
-                    <span class="stat-number">{formatFollowerCount(platform.members)}</span>
+                    <span class="stat-number"
+                      >{formatFollowerCount(platform.members)}</span
+                    >
                     <span class="stat-label">Members</span>
                   </div>
                 {:else if platform.subscribers}
                   <div class="stat-item">
-                    <span class="stat-number">{formatFollowerCount(platform.subscribers)}</span>
+                    <span class="stat-number"
+                      >{formatFollowerCount(platform.subscribers)}</span
+                    >
                     <span class="stat-label">Subscribers</span>
                   </div>
                 {/if}
               </div>
-              
+
               {#if platform.description}
                 <p class="platform-description">{platform.description}</p>
               {/if}
@@ -73,14 +87,18 @@
 
     {#if social.communityContent}
       <div class="community-content">
-        <h3 class="subsection-title">{$t('social.fanContent')}</h3>
-        
+        <h3 class="subsection-title">{$t("social.fanContent")}</h3>
+
         {#if social.communityContent.fanArt?.enabled}
           <div class="content-section">
             <h4>Fan Art</h4>
             <div class="content-info">
-              <p>Share your amazing fan art using <span class="highlight-hashtag">{social.communityContent.fanArt.hashtag}</span></p>
-              
+              <p>
+                Share your amazing fan art using <span class="highlight-hashtag"
+                  >{social.communityContent.fanArt.hashtag}</span
+                >
+              </p>
+
               {#if social.communityContent.fanArt.featured}
                 <div class="featured-content">
                   <h5>Featured Fan Art</h5>
@@ -88,11 +106,22 @@
                     {#each social.communityContent.fanArt.featured as artwork}
                       <div class="featured-item glass-card hover-lift">
                         <div class="featured-image">
-                          <img src={artwork.image} alt={artwork.description} />
+                          <img
+                            src={assertUrl(artwork.image)}
+                            alt={artwork.description}
+                          />
                         </div>
                         <div class="featured-info">
-                          <p class="featured-artist">by <a href={artwork.url} target="_blank" rel="noopener">{artwork.artist}</a></p>
-                          <p class="featured-description">{artwork.description}</p>
+                          <p class="featured-artist">
+                            by <a
+                              href={artwork.url}
+                              target="_blank"
+                              rel="noopener">{artwork.artist}</a
+                            >
+                          </p>
+                          <p class="featured-description">
+                            {artwork.description}
+                          </p>
                         </div>
                       </div>
                     {/each}
@@ -107,9 +136,16 @@
           <div class="content-section">
             <h4>Screenshots</h4>
             <div class="content-info">
-              <p>Share your best in-game moments using <span class="highlight-hashtag">{social.communityContent.screenshots.hashtag}</span></p>
+              <p>
+                Share your best in-game moments using <span
+                  class="highlight-hashtag"
+                  >{social.communityContent.screenshots.hashtag}</span
+                >
+              </p>
               {#if social.communityContent.screenshots.photoMode}
-                <p class="feature-note">📸 Photo Mode available in-game for perfect shots!</p>
+                <p class="feature-note">
+                  📸 Photo Mode available in-game for perfect shots!
+                </p>
               {/if}
             </div>
           </div>
@@ -119,7 +155,11 @@
           <div class="content-section">
             <h4>Videos & Streaming</h4>
             <div class="content-info">
-              <p>Create content using <span class="highlight-hashtag">{social.communityContent.videos.hashtag}</span></p>
+              <p>
+                Create content using <span class="highlight-hashtag"
+                  >{social.communityContent.videos.hashtag}</span
+                >
+              </p>
               <div class="streaming-perms">
                 {#if social.communityContent.videos.streamingAllowed}
                   <span class="perm-badge allowed">✓ Streaming Allowed</span>
@@ -136,12 +176,12 @@
 
     {#if social.influencers}
       <div class="influencers-section">
-        <h3 class="subsection-title">{$t('social.influencers')}</h3>
+        <h3 class="subsection-title">{$t("social.influencers")}</h3>
         <div class="influencers-grid">
           {#each social.influencers as influencer}
-            <a 
-              href={influencer.url} 
-              target="_blank" 
+            <a
+              href={influencer.url}
+              target="_blank"
               rel="noopener noreferrer"
               class="influencer-card glass-card hover-lift"
             >
@@ -149,15 +189,19 @@
                 <h4 class="influencer-name">{influencer.name}</h4>
                 <span class="influencer-platform">{influencer.platform}</span>
               </div>
-              
+
               <div class="influencer-stats">
                 {#if influencer.subscribers}
-                  <span class="influencer-followers">{formatFollowerCount(influencer.subscribers)} subscribers</span>
+                  <span class="influencer-followers"
+                    >{formatFollowerCount(influencer.subscribers)} subscribers</span
+                  >
                 {:else if influencer.followers}
-                  <span class="influencer-followers">{formatFollowerCount(influencer.followers)} followers</span>
+                  <span class="influencer-followers"
+                    >{formatFollowerCount(influencer.followers)} followers</span
+                  >
                 {/if}
               </div>
-              
+
               <p class="influencer-coverage">{influencer.coverage}</p>
             </a>
           {/each}
@@ -167,32 +211,41 @@
 
     {#if social.pressContact}
       <div class="press-contact glass-panel">
-        <h3>{$t('social.pressContact')}</h3>
+        <h3>{$t("social.pressContact")}</h3>
         <div class="contact-info">
           <div class="contact-item">
             <span class="contact-icon">✉️</span>
             <div class="contact-details">
               <span class="contact-label">Email</span>
-              <a href="mailto:{social.pressContact.email}" class="contact-value">{social.pressContact.email}</a>
+              <a href="mailto:{social.pressContact.email}" class="contact-value"
+                >{social.pressContact.email}</a
+              >
             </div>
           </div>
-          
+
           {#if social.pressContact.mediaKit}
             <div class="contact-item">
               <span class="contact-icon">📁</span>
               <div class="contact-details">
                 <span class="contact-label">Media Kit</span>
-                <a href={social.pressContact.mediaKit} target="_blank" rel="noopener" class="contact-value">Download Press Kit</a>
+                <a
+                  href={social.pressContact.mediaKit}
+                  target="_blank"
+                  rel="noopener"
+                  class="contact-value">Download Press Kit</a
+                >
               </div>
             </div>
           {/if}
-          
+
           {#if social.pressContact.responseTime}
             <div class="contact-item">
               <span class="contact-icon">⏱️</span>
               <div class="contact-details">
                 <span class="contact-label">Response Time</span>
-                <span class="contact-value">{social.pressContact.responseTime}</span>
+                <span class="contact-value"
+                  >{social.pressContact.responseTime}</span
+                >
               </div>
             </div>
           {/if}
@@ -299,7 +352,6 @@
     line-height: 1.5;
     margin: 0;
   }
-
 
   .content-section {
     margin-bottom: var(--spacing-2xl);
@@ -508,20 +560,19 @@
     .platforms-grid {
       grid-template-columns: 1fr;
     }
-    
-    
+
     .featured-grid {
       grid-template-columns: 1fr;
     }
-    
+
     .influencers-grid {
       grid-template-columns: 1fr;
     }
-    
+
     .streaming-perms {
       flex-direction: column;
     }
-    
+
     .influencer-header {
       flex-direction: column;
       align-items: flex-start;
@@ -529,3 +580,4 @@
     }
   }
 </style>
+

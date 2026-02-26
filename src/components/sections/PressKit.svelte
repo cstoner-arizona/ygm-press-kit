@@ -1,13 +1,15 @@
 <script>
-  import { t } from '../../i18n/index.js';
-  
+  import { t } from "../../i18n/index.js";
+
   export let pressKit = {};
 </script>
 
 <section class="presskit section">
   <div class="container">
-    <h2 class="section-title gradient-text text-center">{$t('sections.pressKit')}</h2>
-    
+    <h2 class="section-title gradient-text text-center">
+      {$t("sections.pressKit")}
+    </h2>
+
     {#if pressKit.downloadableAssets}
       <div class="assets-grid">
         {#each Object.entries(pressKit.downloadableAssets) as [category, assets]}
@@ -28,7 +30,10 @@
 
     {#if pressKit.pressKitInfo}
       <div class="download-section">
-        <a href={pressKit.pressKitInfo.downloadUrl} class="download-btn glass-button btn-magnetic">
+        <a
+          href={pressKit.pressKitInfo.downloadUrl}
+          class="download-btn glass-button btn-magnetic"
+        >
           Download Complete Press Kit ({pressKit.pressKitInfo.size})
         </a>
       </div>
@@ -101,3 +106,4 @@
     display: inline-block;
   }
 </style>
+

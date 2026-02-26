@@ -1,32 +1,39 @@
 <script>
-  import { t } from '../../i18n/index.js';
-  
+  import { t } from "../../i18n/index.js";
+  import { assertUrl } from "../../utils/assertUrl.js";
+
   export let platforms = {};
 </script>
 
 <section class="platforms section">
   <div class="container">
-    <h2 class="section-title gradient-text text-center">{$t('sections.platforms')}</h2>
-    
+    <h2 class="section-title gradient-text text-center">
+      {$t("sections.platforms")}
+    </h2>
+
     {#if platforms.supportedPlatforms}
       <div class="supported-platforms">
-        <h3 class="subsection-title">{$t('platforms.supportedPlatforms')}</h3>
+        <h3 class="subsection-title">{$t("platforms.supportedPlatforms")}</h3>
         <div class="platforms-grid">
           {#each platforms.supportedPlatforms as platform}
-            <div class="platform-card glass-card hover-lift {platform.available ? 'available' : 'unavailable'}">
+            <div
+              class="platform-card glass-card hover-lift {platform.available
+                ? 'available'
+                : 'unavailable'}"
+            >
               {#if platform.icon}
                 <div class="platform-icon">
-                  <img src={platform.icon} alt={platform.name} />
+                  <img src={assertUrl(platform.icon)} alt={platform.name} />
                 </div>
               {/if}
-              
+
               <div class="platform-info">
                 <h4 class="platform-name">{platform.name}</h4>
-                
+
                 {#if platform.minVersion}
                   <p class="platform-version">Min: {platform.minVersion}</p>
                 {/if}
-                
+
                 {#if platform.architecture}
                   <div class="platform-arch">
                     {#each platform.architecture as arch}
@@ -34,21 +41,23 @@
                     {/each}
                   </div>
                 {/if}
-                
+
                 {#if platform.verified}
                   <div class="platform-verified">
                     <span class="verified-badge">✓ Verified</span>
                   </div>
                 {/if}
-                
+
                 {#if platform.performance}
-                  <p class="platform-performance">Performance: {platform.performance}</p>
+                  <p class="platform-performance">
+                    Performance: {platform.performance}
+                  </p>
                 {/if}
-                
+
                 {#if platform.notes}
                   <p class="platform-notes">{platform.notes}</p>
                 {/if}
-                
+
                 {#if platform.distributions}
                   <div class="platform-distributions">
                     <span class="distro-label">Distributions:</span>
@@ -60,7 +69,7 @@
                   </div>
                 {/if}
               </div>
-              
+
               <div class="platform-status">
                 {#if platform.available}
                   <span class="status-available">Available Now</span>
@@ -76,22 +85,26 @@
 
     {#if platforms.upcomingPlatforms}
       <div class="upcoming-platforms">
-        <h3 class="subsection-title">{$t('platforms.upcomingPlatforms')}</h3>
+        <h3 class="subsection-title">{$t("platforms.upcomingPlatforms")}</h3>
         <div class="upcoming-grid">
           {#each platforms.upcomingPlatforms as platform}
             <div class="upcoming-card glass-card hover-lift">
               {#if platform.icon}
                 <div class="upcoming-icon">
-                  <img src={platform.icon} alt={platform.name} />
+                  <img src={assertUrl(platform.icon)} alt={platform.name} />
                 </div>
               {/if}
-              
+
               <div class="upcoming-info">
                 <h4>{platform.name}</h4>
                 {#if platform.releaseDate}
                   <p class="release-date">Expected: {platform.releaseDate}</p>
                 {/if}
-                <span class="development-status status-{platform.status?.toLowerCase().replace(' ', '-')}">{platform.status}</span>
+                <span
+                  class="development-status status-{platform.status
+                    ?.toLowerCase()
+                    .replace(' ', '-')}">{platform.status}</span
+                >
               </div>
             </div>
           {/each}
@@ -101,7 +114,7 @@
 
     {#if platforms.controllerSupport}
       <div class="controller-support">
-        <h3 class="subsection-title">{$t('platforms.controllerSupport')}</h3>
+        <h3 class="subsection-title">{$t("platforms.controllerSupport")}</h3>
         <div class="controllers-grid">
           {#each platforms.controllerSupport as controller}
             <div class="controller-card glass-card">
@@ -111,7 +124,7 @@
                   <span class="native-support">Native Support</span>
                 {/if}
               </div>
-              
+
               {#if controller.features?.length > 0}
                 <div class="controller-features">
                   <span class="features-label">Features:</span>
@@ -130,7 +143,7 @@
 
     {#if platforms.accessibility}
       <div class="accessibility-features">
-        <h3 class="subsection-title">{$t('platforms.accessibility')}</h3>
+        <h3 class="subsection-title">{$t("platforms.accessibility")}</h3>
         <div class="accessibility-grid">
           {#each platforms.accessibility as feature}
             <div class="accessibility-item glass-card">
@@ -411,7 +424,7 @@
   }
 
   .features-list li::before {
-    content: '•';
+    content: "•";
     color: var(--accent-color);
     position: absolute;
     left: 0;
@@ -447,11 +460,11 @@
     .controllers-grid {
       grid-template-columns: 1fr;
     }
-    
+
     .accessibility-grid {
       grid-template-columns: 1fr;
     }
-    
+
     .controller-header {
       flex-direction: column;
       align-items: flex-start;
@@ -459,3 +472,4 @@
     }
   }
 </style>
+

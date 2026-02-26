@@ -1,21 +1,25 @@
 <script>
-  import { onMount } from 'svelte';
-  import { t } from '../../i18n/index.js';
-  
+  import { onMount } from "svelte";
+  import { t } from "../../i18n/index.js";
+  import { assertUrl } from "../../utils/assertUrl.js";
+
   export let metadata = {};
   export let storeLinks = {};
   export let media = {};
-  
+
   let videoElement;
   let isVideoPlaying = false;
   let heroRef;
-  
+
   // Extract primary store link
-  $: primaryStore = storeLinks?.stores?.find(store => store.primaryButton) || storeLinks?.stores?.[0];
-  
+  $: primaryStore =
+    storeLinks?.stores?.find((store) => store.primaryButton) ||
+    storeLinks?.stores?.[0];
+
   // Extract trailer video
-  $: trailer = media?.videos?.find(video => video.featured) || media?.videos?.[0];
-  
+  $: trailer =
+    media?.videos?.find((video) => video.featured) || media?.videos?.[0];
+
   onMount(() => {
     // Parallax effect on scroll
     const handleScroll = () => {
@@ -25,14 +29,14 @@
         heroRef.style.transform = `translateY(${parallax}px)`;
       }
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    
+
+    window.addEventListener("scroll", handleScroll);
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   });
-  
+
   function playTrailer() {
     if (videoElement) {
       if (isVideoPlaying) {
@@ -44,7 +48,7 @@
       }
     }
   }
-  
+
   function handleVideoEnd() {
     isVideoPlaying = false;
   }
@@ -54,13 +58,13 @@
   <!-- Background Video/Image -->
   <div class="hero-background">
     {#if metadata.heroImage}
-      <img 
-        src={metadata.heroImage} 
+      <img
+        src={assertUrl(metadata.heroImage)}
         alt={metadata.gameName}
         class="hero-bg-image"
       />
     {/if}
-    
+
     <!-- Video Overlay (if trailer exists) -->
     {#if trailer}
       <video
@@ -71,89 +75,99 @@
         preload="metadata"
         on:ended={handleVideoEnd}
       >
-        <source src={trailer.url} type="video/mp4">
+        <source src={assertUrl(trailer.url)} type="video/mp4" />
       </video>
     {/if}
-    
+
     <!-- Gradient Overlay -->
     <div class="hero-overlay"></div>
   </div>
-  
+
   <!-- Content -->
   <div class="hero-content container">
     <div class="hero-main">
       <!-- Game Logo -->
-    {#if metadata.logo}
-      <div class="game-logo hover-lift">
-        <img src={metadata.logo} alt={metadata.gameName} />
-      </div>
-    {/if}
-      
+      {#if metadata.logo}
+        <div class="game-logo hover-lift">
+          <img src={assertUrl(metadata.logo)} alt={metadata.gameName} />
+        </div>
+      {/if}
+
       <!-- Game Title (fallback if no logo) -->
       {#if !metadata.logo}
         <h1 class="game-title gradient-text">{metadata.gameName}</h1>
       {/if}
-      
+
       <!-- Tagline -->
       {#if metadata.tagline}
         <p class="tagline">{metadata.tagline}</p>
       {/if}
-      
+
       <!-- Action Buttons -->
       <div class="hero-actions">
         {#if trailer}
-          <button 
+          <button
             class="btn-play glass-button btn-magnetic"
             on:click={playTrailer}
           >
             <span class="play-icon">
               {#if isVideoPlaying}
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <rect x="6" y="4" width="4" height="16"/>
-                  <rect x="14" y="4" width="4" height="16"/>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <rect x="6" y="4" width="4" height="16" />
+                  <rect x="14" y="4" width="4" height="16" />
                 </svg>
               {:else}
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M8 5v14l11-7z"/>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M8 5v14l11-7z" />
                 </svg>
               {/if}
             </span>
-            {$t('hero.playTrailer')}
+            {$t("hero.playTrailer")}
           </button>
         {/if}
-        
+
         {#if primaryStore}
-          <a 
+          <a
             href={primaryStore.url}
             class="btn-primary glass-button btn-magnetic hover-glow"
             target="_blank"
             rel="noopener noreferrer"
           >
-            {$t('hero.getGame')} - {primaryStore.price}
+            {$t("hero.getGame")} - {primaryStore.price}
           </a>
         {/if}
       </div>
-      
+
       <!-- Store Icons -->
       {#if storeLinks?.stores?.length > 0}
         <div class="store-badges">
-          <span class="store-label">{$t('hero.availableOn')}:</span>
+          <span class="store-label">{$t("hero.availableOn")}:</span>
           <div class="store-icons">
             {#each storeLinks.stores.slice(0, 4) as store}
-              <a 
-                href={store.url} 
+              <a
+                href={store.url}
                 class="store-icon hover-lift"
                 title={store.name}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 {#if store.icon}
-                  <img src={store.icon} alt={store.name} />
+                  <img src={assertUrl(store.icon)} alt={store.name} />
                 {:else}
                   <span class="store-text">{store.name}</span>
                 {/if}
                 {#if !store.available}
-                  <span class="coming-soon">{$t('hero.comingSoon')}</span>
+                  <span class="coming-soon">{$t("hero.comingSoon")}</span>
                 {/if}
               </a>
             {/each}
@@ -161,24 +175,26 @@
         </div>
       {/if}
     </div>
-    
+
     <!-- Game Info Cards -->
     <div class="hero-info">
       <div class="info-cards">
         {#if metadata.genre}
           <div class="info-card glass-card hover-lift">
             <span class="info-label">Genre</span>
-            <span class="info-value">{metadata.genre.join(', ')}</span>
+            <span class="info-value">{metadata.genre.join(", ")}</span>
           </div>
         {/if}
-        
+
         {#if metadata.releaseDate}
           <div class="info-card glass-card hover-lift">
             <span class="info-label">Release Date</span>
-            <span class="info-value">{new Date(metadata.releaseDate).toLocaleDateString()}</span>
+            <span class="info-value"
+              >{new Date(metadata.releaseDate).toLocaleDateString()}</span
+            >
           </div>
         {/if}
-        
+
         {#if metadata.developer}
           <div class="info-card glass-card hover-lift">
             <span class="info-label">Developer</span>
@@ -188,12 +204,12 @@
       </div>
     </div>
   </div>
-  
+
   <!-- Scroll Indicator -->
   <div class="scroll-indicator">
     <div class="scroll-arrow">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M7 10l5 5 5-5z"/>
+        <path d="M7 10l5 5 5-5z" />
       </svg>
     </div>
   </div>
@@ -320,7 +336,11 @@
   }
 
   .btn-primary {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(
+      135deg,
+      var(--primary-color),
+      var(--secondary-color)
+    );
     border: none;
   }
 
@@ -445,7 +465,11 @@
   }
 
   @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
       transform: translateX(-50%) translateY(0);
     }
     40% {
@@ -462,11 +486,11 @@
       grid-template-columns: 1fr;
       gap: var(--spacing-2xl);
     }
-    
+
     .hero-info {
       order: -1;
     }
-    
+
     .info-cards {
       flex-direction: row;
       justify-content: center;
@@ -478,35 +502,35 @@
     .hero {
       min-height: 90vh;
     }
-    
+
     .game-logo img {
       max-width: 400px;
     }
-    
+
     .game-title {
       font-size: var(--font-size-3xl);
     }
-    
+
     .tagline {
       font-size: var(--font-size-lg);
     }
-    
+
     .hero-actions {
       flex-direction: column;
       gap: var(--spacing-md);
     }
-    
+
     .btn-play,
     .btn-primary {
       width: 100%;
       max-width: 300px;
       justify-content: center;
     }
-    
+
     .info-cards {
       flex-direction: column;
     }
-    
+
     .info-card {
       min-width: auto;
     }
@@ -517,9 +541,10 @@
     .scroll-indicator {
       animation: none;
     }
-    
+
     .hero-video {
       opacity: 0.3;
     }
   }
 </style>
+

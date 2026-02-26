@@ -1,21 +1,33 @@
 <script>
-  import { t } from '../../i18n/index.js';
-  
+  import { t } from "../../i18n/index.js";
+  import { assertUrl } from "../../utils/assertUrl.js";
+
   export let reviews = {};
 </script>
 
 <section class="reviews section">
   <div class="container">
-    <h2 class="section-title gradient-text text-center">{$t('sections.reviews')}</h2>
-    
+    <h2 class="section-title gradient-text text-center">
+      {$t("sections.reviews")}
+    </h2>
+
     {#if reviews.scores && reviews.scores.length > 0}
       <div class="scores-section">
-        <h3 class="subsection-title">{$t('reviews.scores')}</h3>
+        <h3 class="subsection-title">{$t("reviews.scores")}</h3>
         <div class="scores-grid">
           {#each reviews.scores as score}
-            <a href={score.url} target="_blank" rel="noopener" class="score-card glass-card hover-lift">
+            <a
+              href={score.url}
+              target="_blank"
+              rel="noopener"
+              class="score-card glass-card hover-lift"
+            >
               <div class="score-platform">{score.name}</div>
-              <div class="score-value score-{score.name.toLowerCase().replace(' ', '-')}">
+              <div
+                class="score-value score-{score.name
+                  .toLowerCase()
+                  .replace(' ', '-')}"
+              >
                 {#if score.maxScore}
                   {score.score}/{score.maxScore}
                 {:else if score.scoreText}
@@ -28,21 +40,27 @@
                 <div class="score-reviews">{score.reviewCount} reviews</div>
               {/if}
               {#if score.type}
-                <div class="score-type">{score.type === 'critic' ? 'Critics' : 'Users'}</div>
+                <div class="score-type">
+                  {score.type === "critic" ? "Critics" : "Users"}
+                </div>
               {/if}
             </a>
           {/each}
         </div>
       </div>
     {/if}
-    
+
     {#if reviews.featuredReviews}
       <div class="reviews-grid">
         {#each reviews.featuredReviews as review}
           <div class="review-card glass-card hover-lift">
             <div class="review-header">
               {#if review.logo}
-                <img src={review.logo} alt={review.publication} class="publication-logo" />
+                <img
+                  src={assertUrl(review.logo)}
+                  alt={review.publication}
+                  class="publication-logo"
+                />
               {/if}
               <div class="review-meta">
                 <h3>{review.publication}</h3>
@@ -63,7 +81,7 @@
           {#each reviews.awards as award}
             <div class="award-item glass-card">
               {#if award.image}
-                <img src={award.image} alt={award.name} />
+                <img src={assertUrl(award.image)} alt={award.name} />
               {/if}
               <h4>{award.name}</h4>
               <p>{award.organization} - {award.year}</p>
@@ -74,13 +92,15 @@
     {/if}
 
     {#if reviews.playerTestimonials}
-    <br><br>
+      <br /><br />
       <div class="testimonials-section">
-        <h3 class="subsection-title">{$t('reviews.playerTestimonials')}</h3>
+        <h3 class="subsection-title">{$t("reviews.playerTestimonials")}</h3>
         <div class="testimonials-grid">
           {#each reviews.playerTestimonials as testimonial}
             <div class="testimonial-card glass-card">
-              <blockquote class="testimonial-quote">"{testimonial.quote}"</blockquote>
+              <blockquote class="testimonial-quote">
+                "{testimonial.quote}"
+              </blockquote>
               <div class="testimonial-meta">
                 <cite class="testimonial-author">- {testimonial.author}</cite>
                 <div class="testimonial-info">
@@ -230,10 +250,14 @@
   .score-value {
     color: var(--primary-color);
   }
-  
+
   /* Optional: Special colors for well-known platforms */
-  .score-value.score-metacritic { color: #ffcc33; }
-  .score-value.score-steam { color: #66c0f4; }
+  .score-value.score-metacritic {
+    color: #ffcc33;
+  }
+  .score-value.score-steam {
+    color: #66c0f4;
+  }
 
   .score-reviews,
   .score-count {
@@ -314,14 +338,15 @@
     .scores-grid {
       grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .testimonials-grid {
       grid-template-columns: 1fr;
     }
-    
+
     .testimonial-meta {
       flex-direction: column;
       align-items: flex-start;
     }
   }
 </style>
+

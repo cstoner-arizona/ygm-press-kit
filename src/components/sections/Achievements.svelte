@@ -1,40 +1,53 @@
 <script>
-  import { t } from '../../i18n/index.js';
-  
+  import { t } from "../../i18n/index.js";
+
   export let achievements = {};
-  
+
   // Filter achievements by rarity
   function getAchievementsByRarity(achievements, rarity) {
-    return achievements.filter(achievement => achievement.rarity.toLowerCase() === rarity.toLowerCase());
+    return achievements.filter(
+      (achievement) =>
+        achievement.rarity.toLowerCase() === rarity.toLowerCase(),
+    );
   }
-  
+
   // Get rarity color
   function getRarityColor(rarity) {
-    switch(rarity.toLowerCase()) {
-      case 'common': return '#22c55e';
-      case 'uncommon': return '#3b82f6';
-      case 'rare': return '#a855f7';
-      case 'very rare': return '#f59e0b';
-      case 'ultra rare': return '#ef4444';
-      default: return '#6b7280';
+    switch (rarity.toLowerCase()) {
+      case "common":
+        return "#22c55e";
+      case "uncommon":
+        return "#3b82f6";
+      case "rare":
+        return "#a855f7";
+      case "very rare":
+        return "#f59e0b";
+      case "ultra rare":
+        return "#ef4444";
+      default:
+        return "#6b7280";
     }
   }
 </script>
 
 <section class="achievements section">
   <div class="container">
-    <h2 class="section-title gradient-text text-center">{$t('sections.achievements')}</h2>
-    
+    <h2 class="section-title gradient-text text-center">
+      {$t("sections.achievements")}
+    </h2>
+
     {#if achievements.totalAchievements}
       <div class="achievements-stats glass-panel">
         <div class="stat-item">
           <span class="stat-number">{achievements.totalAchievements}</span>
-          <span class="stat-label">{$t('achievements.totalAchievements')}</span>
+          <span class="stat-label">{$t("achievements.totalAchievements")}</span>
         </div>
         {#if achievements.rewardSystem}
           <div class="stat-item">
-            <span class="stat-number">{achievements.rewardSystem.totalPoints}</span>
-            <span class="stat-label">{$t('achievements.points')}</span>
+            <span class="stat-number"
+              >{achievements.rewardSystem.totalPoints}</span
+            >
+            <span class="stat-label">{$t("achievements.points")}</span>
           </div>
         {/if}
       </div>
@@ -47,7 +60,12 @@
             <h3 class="category-title">{category.name}</h3>
             <div class="achievements-grid">
               {#each category.achievements as achievement}
-                <div class="achievement-card glass-card hover-lift" style="border-left: 4px solid {getRarityColor(achievement.rarity)}">
+                <div
+                  class="achievement-card glass-card hover-lift"
+                  style="border-left: 4px solid {getRarityColor(
+                    achievement.rarity,
+                  )}"
+                >
                   <div class="achievement-header">
                     {#if achievement.icon}
                       <div class="achievement-icon">
@@ -56,14 +74,21 @@
                     {/if}
                     <div class="achievement-info">
                       <h4 class="achievement-name">{achievement.name}</h4>
-                      <p class="achievement-description">{achievement.description}</p>
+                      <p class="achievement-description">
+                        {achievement.description}
+                      </p>
                     </div>
                   </div>
-                  
+
                   <div class="achievement-meta">
                     <div class="achievement-stats">
-                      <span class="rarity" style="color: {getRarityColor(achievement.rarity)}">
-                        {$t(`achievements.${achievement.rarity.toLowerCase().replace(' ', '')}`)}
+                      <span
+                        class="rarity"
+                        style="color: {getRarityColor(achievement.rarity)}"
+                      >
+                        {$t(
+                          `achievements.${achievement.rarity.toLowerCase().replace(" ", "")}`,
+                        )}
                       </span>
                       <span class="percentage">{achievement.percentage}%</span>
                     </div>
@@ -73,12 +98,14 @@
                       </div>
                     {/if}
                   </div>
-                  
+
                   <div class="achievement-progress">
                     <div class="progress-bar">
-                      <div 
-                        class="progress-fill" 
-                        style="width: {achievement.percentage}%; background-color: {getRarityColor(achievement.rarity)}"
+                      <div
+                        class="progress-fill"
+                        style="width: {achievement.percentage}%; background-color: {getRarityColor(
+                          achievement.rarity,
+                        )}"
                       ></div>
                     </div>
                   </div>
@@ -95,19 +122,27 @@
         <h3>Steam Integration</h3>
         <div class="steam-stats">
           <div class="steam-item">
-            <span class="steam-number">{achievements.steamIntegration.tradingCards}</span>
+            <span class="steam-number"
+              >{achievements.steamIntegration.tradingCards}</span
+            >
             <span class="steam-label">Trading Cards</span>
           </div>
           <div class="steam-item">
-            <span class="steam-number">{achievements.steamIntegration.badges}</span>
+            <span class="steam-number"
+              >{achievements.steamIntegration.badges}</span
+            >
             <span class="steam-label">Badges</span>
           </div>
           <div class="steam-item">
-            <span class="steam-number">{achievements.steamIntegration.emoticons}</span>
+            <span class="steam-number"
+              >{achievements.steamIntegration.emoticons}</span
+            >
             <span class="steam-label">Emoticons</span>
           </div>
           <div class="steam-item">
-            <span class="steam-number">{achievements.steamIntegration.backgrounds}</span>
+            <span class="steam-number"
+              >{achievements.steamIntegration.backgrounds}</span
+            >
             <span class="steam-label">Backgrounds</span>
           </div>
         </div>
@@ -338,17 +373,18 @@
       flex-direction: column;
       gap: var(--spacing-xl);
     }
-    
+
     .achievements-grid {
       grid-template-columns: 1fr;
     }
-    
+
     .steam-stats {
       grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .rewards-grid {
       grid-template-columns: 1fr;
     }
   }
 </style>
+

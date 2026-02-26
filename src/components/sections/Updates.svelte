@@ -1,34 +1,40 @@
 <script>
-  import { t } from '../../i18n/index.js';
-  
+  import { t } from "../../i18n/index.js";
+
   export let updates = {};
-  
+
   function formatDate(dateString) {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   }
-  
+
   function getUpdateTypeColor(type) {
-    switch(type) {
-      case 'major': return '#8b5cf6';
-      case 'minor': return '#3b82f6';
-      case 'patch': return '#22c55e';
-      default: return '#6b7280';
+    switch (type) {
+      case "major":
+        return "#8b5cf6";
+      case "minor":
+        return "#3b82f6";
+      case "patch":
+        return "#22c55e";
+      default:
+        return "#6b7280";
     }
   }
 </script>
 
 <section class="updates section">
   <div class="container">
-    <h2 class="section-title gradient-text text-center">{$t('sections.updates')}</h2>
-    
+    <h2 class="section-title gradient-text text-center">
+      {$t("sections.updates")}
+    </h2>
+
     {#if updates.currentVersion}
       <div class="current-version glass-panel">
         <div class="version-info">
-          <h3>{$t('updates.currentVersion')}</h3>
+          <h3>{$t("updates.currentVersion")}</h3>
           <span class="version-number">{updates.currentVersion}</span>
         </div>
       </div>
@@ -36,26 +42,36 @@
 
     {#if updates.updates}
       <div class="updates-timeline">
-        <h3 class="subsection-title">{$t('updates.releaseNotes')}</h3>
+        <h3 class="subsection-title">{$t("updates.releaseNotes")}</h3>
         <div class="timeline">
           {#each updates.updates as update}
             <div class="timeline-item">
-              <div class="timeline-marker" style="background-color: {getUpdateTypeColor(update.type)}"></div>
-              
+              <div
+                class="timeline-marker"
+                style="background-color: {getUpdateTypeColor(update.type)}"
+              ></div>
+
               <div class="update-card glass-card">
                 <div class="update-header">
                   <div class="update-meta">
                     <h4 class="update-title">{update.title}</h4>
                     <div class="update-badges">
                       <span class="version-badge">v{update.version}</span>
-                      <span class="type-badge type-{update.type}" style="background-color: {getUpdateTypeColor(update.type)}20; color: {getUpdateTypeColor(update.type)}">
+                      <span
+                        class="type-badge type-{update.type}"
+                        style="background-color: {getUpdateTypeColor(
+                          update.type,
+                        )}20; color: {getUpdateTypeColor(update.type)}"
+                      >
                         {update.type}
                       </span>
                     </div>
                   </div>
-                  <div class="update-date">{formatDate(update.releaseDate)}</div>
+                  <div class="update-date">
+                    {formatDate(update.releaseDate)}
+                  </div>
                 </div>
-                
+
                 {#if update.highlights}
                   <div class="update-highlights">
                     <h5>Highlights</h5>
@@ -66,14 +82,16 @@
                     </ul>
                   </div>
                 {/if}
-                
+
                 {#if update.changelog}
                   <div class="update-changelog">
-                    <h5>{$t('updates.changelog')}</h5>
-                    
+                    <h5>{$t("updates.changelog")}</h5>
+
                     {#if update.changelog.added}
                       <div class="changelog-section">
-                        <h6 class="changelog-type added">{$t('updates.added')}</h6>
+                        <h6 class="changelog-type added">
+                          {$t("updates.added")}
+                        </h6>
                         <ul class="changelog-list">
                           {#each update.changelog.added as item}
                             <li>{item}</li>
@@ -81,10 +99,12 @@
                         </ul>
                       </div>
                     {/if}
-                    
+
                     {#if update.changelog.improved}
                       <div class="changelog-section">
-                        <h6 class="changelog-type improved">{$t('updates.improved')}</h6>
+                        <h6 class="changelog-type improved">
+                          {$t("updates.improved")}
+                        </h6>
                         <ul class="changelog-list">
                           {#each update.changelog.improved as item}
                             <li>{item}</li>
@@ -92,10 +112,12 @@
                         </ul>
                       </div>
                     {/if}
-                    
+
                     {#if update.changelog.fixed}
                       <div class="changelog-section">
-                        <h6 class="changelog-type fixed">{$t('updates.fixed')}</h6>
+                        <h6 class="changelog-type fixed">
+                          {$t("updates.fixed")}
+                        </h6>
                         <ul class="changelog-list">
                           {#each update.changelog.fixed as item}
                             <li>{item}</li>
@@ -105,10 +127,12 @@
                     {/if}
                   </div>
                 {/if}
-                
+
                 {#if update.downloadSize}
                   <div class="update-footer">
-                    <span class="download-size">Download Size: {update.downloadSize}</span>
+                    <span class="download-size"
+                      >Download Size: {update.downloadSize}</span
+                    >
                   </div>
                 {/if}
               </div>
@@ -120,7 +144,7 @@
 
     {#if updates.upcomingUpdates}
       <div class="upcoming-updates">
-        <h3 class="subsection-title">{$t('updates.upcomingUpdates')}</h3>
+        <h3 class="subsection-title">{$t("updates.upcomingUpdates")}</h3>
         <div class="upcoming-grid">
           {#each updates.upcomingUpdates as update}
             <div class="upcoming-card glass-card hover-lift">
@@ -128,9 +152,9 @@
                 <h4>{update.title}</h4>
                 <span class="upcoming-version">v{update.version}</span>
               </div>
-              
+
               <p class="upcoming-description">{update.description}</p>
-              
+
               {#if update.features}
                 <div class="upcoming-features">
                   <h5>Planned Features</h5>
@@ -141,10 +165,16 @@
                   </ul>
                 </div>
               {/if}
-              
+
               <div class="upcoming-footer">
-                <span class="upcoming-release">Expected: {update.estimatedRelease}</span>
-                <span class="upcoming-status status-{update.status?.toLowerCase().replace(' ', '-')}">{update.status}</span>
+                <span class="upcoming-release"
+                  >Expected: {update.estimatedRelease}</span
+                >
+                <span
+                  class="upcoming-status status-{update.status
+                    ?.toLowerCase()
+                    .replace(' ', '-')}">{update.status}</span
+                >
               </div>
             </div>
           {/each}
@@ -154,7 +184,7 @@
 
     {#if updates.roadmap}
       <div class="roadmap-section">
-        <h3 class="subsection-title">{$t('updates.roadmap')}</h3>
+        <h3 class="subsection-title">{$t("updates.roadmap")}</h3>
         <div class="roadmap-grid">
           <div class="roadmap-card glass-card">
             <h4>Short Term</h4>
@@ -164,7 +194,7 @@
               {/each}
             </ul>
           </div>
-          
+
           <div class="roadmap-card glass-card">
             <h4>Long Term</h4>
             <ul class="roadmap-list">
@@ -179,11 +209,11 @@
 
     {#if updates.betaProgram?.enabled}
       <div class="beta-program glass-panel">
-        <h3>{$t('updates.betaProgram')}</h3>
+        <h3>{$t("updates.betaProgram")}</h3>
         <div class="beta-content">
           <div class="beta-info">
             <p>{updates.betaProgram.description}</p>
-            
+
             {#if updates.betaProgram.requirements}
               <div class="beta-requirements">
                 <h4>Requirements</h4>
@@ -195,10 +225,15 @@
               </div>
             {/if}
           </div>
-          
+
           {#if updates.betaProgram.signupUrl}
             <div class="beta-action">
-              <a href={updates.betaProgram.signupUrl} target="_blank" rel="noopener" class="beta-button glass-button btn-magnetic">
+              <a
+                href={updates.betaProgram.signupUrl}
+                target="_blank"
+                rel="noopener"
+                class="beta-button glass-button btn-magnetic"
+              >
                 Join Beta Program
               </a>
             </div>
@@ -229,7 +264,11 @@
     font-size: var(--font-size-3xl);
     font-weight: bold;
     color: var(--text-primary);
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(
+      135deg,
+      var(--primary-color),
+      var(--secondary-color)
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -254,13 +293,17 @@
   }
 
   .timeline::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 15px;
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(
+      180deg,
+      var(--primary-color),
+      var(--secondary-color)
+    );
   }
 
   .timeline-item {
@@ -351,7 +394,7 @@
   }
 
   .highlights-list li::before {
-    content: '⭐';
+    content: "⭐";
     position: absolute;
     left: 0;
   }
@@ -405,7 +448,7 @@
   }
 
   .changelog-list li::before {
-    content: '•';
+    content: "•";
     position: absolute;
     left: 0;
     color: var(--accent-color);
@@ -478,7 +521,7 @@
   }
 
   .upcoming-features-list li::before {
-    content: '🚀';
+    content: "🚀";
     position: absolute;
     left: 0;
   }
@@ -542,7 +585,7 @@
   }
 
   .roadmap-list li::before {
-    content: '📋';
+    content: "📋";
     position: absolute;
     left: 0;
   }
@@ -582,7 +625,7 @@
   }
 
   .requirements-list li::before {
-    content: '✓';
+    content: "✓";
     position: absolute;
     left: 0;
     color: var(--accent-color);
@@ -599,24 +642,25 @@
     .timeline {
       padding-left: var(--spacing-lg);
     }
-    
+
     .update-card {
       margin-left: 0;
     }
-    
+
     .update-header {
       flex-direction: column;
       align-items: flex-start;
     }
-    
+
     .upcoming-grid,
     .roadmap-grid {
       grid-template-columns: 1fr;
     }
-    
+
     .beta-content {
       grid-template-columns: 1fr;
       text-align: center;
     }
   }
 </style>
+

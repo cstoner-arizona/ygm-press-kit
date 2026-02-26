@@ -1,14 +1,15 @@
 <script>
-  import { t } from '../../i18n/index.js';
-  
+  import { t } from "../../i18n/index.js";
+  import { assertUrl } from "../../utils/assertUrl.js";
+
   export let media = {};
-  
+
   let selectedImage = null;
-  
+
   function openModal(screenshot) {
     selectedImage = screenshot;
   }
-  
+
   function closeModal() {
     selectedImage = null;
   }
@@ -16,14 +17,19 @@
 
 <section class="screenshots section">
   <div class="container">
-    <h2 class="section-title gradient-text text-center">{$t('sections.screenshots')}</h2>
-    
+    <h2 class="section-title gradient-text text-center">
+      {$t("sections.screenshots")}
+    </h2>
+
     {#if media.screenshots}
       <div class="screenshots-grid">
         {#each media.screenshots as screenshot}
-          <div class="screenshot-item hover-lift img-zoom" on:click={() => openModal(screenshot)}>
-            <img 
-              src={screenshot.thumbnail || screenshot.url} 
+          <div
+            class="screenshot-item hover-lift img-zoom"
+            on:click={() => openModal(screenshot)}
+          >
+            <img
+              src={assertUrl(screenshot.thumbnail) || assertUrl(screenshot.url)}
               alt={screenshot.caption || screenshot.alt}
               loading="lazy"
             />
@@ -35,13 +41,16 @@
       </div>
     {/if}
   </div>
-  
+
   <!-- Modal -->
   {#if selectedImage}
     <div class="modal-overlay" on:click={closeModal}>
       <div class="modal-content glass-modal">
         <button class="modal-close" on:click={closeModal}>×</button>
-        <img src={selectedImage.url} alt={selectedImage.alt} />
+        <img
+          src={assertUrl(selectedImage.url)}
+          alt={assertUrl(selectedImage.alt)}
+        />
         {#if selectedImage.caption}
           <p class="image-caption">{selectedImage.caption}</p>
         {/if}
@@ -157,3 +166,4 @@
     color: var(--text-secondary);
   }
 </style>
+

@@ -1,22 +1,26 @@
 <script>
-  import { t } from '../../i18n/index.js';
-  
+  import { t } from "../../i18n/index.js";
+
   export let requirements = {};
 </script>
 
 <section class="requirements section">
   <div class="container">
-    <h2 class="section-title gradient-text text-center">{$t('sections.systemRequirements')}</h2>
-    
+    <h2 class="section-title gradient-text text-center">
+      {$t("sections.systemRequirements")}
+    </h2>
+
     <div class="requirements-grid">
       {#if requirements.minimum}
         <div class="requirement-card glass-card">
-          <h3 class="req-title">{$t('requirements.minimum')}</h3>
+          <h3 class="req-title">{$t("requirements.minimum")}</h3>
           <div class="req-list">
             {#each Object.entries(requirements.minimum) as [key, value]}
-              {#if key !== 'notes'}
+              {#if key !== "notes"}
                 <div class="req-item">
-                  <span class="req-label">{$t(`requirements.${key}`) || key}:</span>
+                  <span class="req-label"
+                    >{$t(`requirements.${key}`) || key}:</span
+                  >
                   <span class="req-value">{value}</span>
                 </div>
               {/if}
@@ -30,12 +34,14 @@
 
       {#if requirements.recommended}
         <div class="requirement-card glass-card recommended">
-          <h3 class="req-title">{$t('requirements.recommended')}</h3>
+          <h3 class="req-title">{$t("requirements.recommended")}</h3>
           <div class="req-list">
             {#each Object.entries(requirements.recommended) as [key, value]}
-              {#if key !== 'notes'}
+              {#if key !== "notes"}
                 <div class="req-item">
-                  <span class="req-label">{$t(`requirements.${key}`) || key}:</span>
+                  <span class="req-label"
+                    >{$t(`requirements.${key}`) || key}:</span
+                  >
                   <span class="req-value">{value}</span>
                 </div>
               {/if}
@@ -49,12 +55,14 @@
 
       {#if requirements.ultra}
         <div class="requirement-card glass-card ultra">
-          <h3 class="req-title">{$t('requirements.ultra')}</h3>
+          <h3 class="req-title">{$t("requirements.ultra")}</h3>
           <div class="req-list">
             {#each Object.entries(requirements.ultra) as [key, value]}
-              {#if key !== 'notes'}
+              {#if key !== "notes"}
                 <div class="req-item">
-                  <span class="req-label">{$t(`requirements.${key}`) || key}:</span>
+                  <span class="req-label"
+                    >{$t(`requirements.${key}`) || key}:</span
+                  >
                   <span class="req-value">{value}</span>
                 </div>
               {/if}
@@ -69,7 +77,7 @@
 
     {#if requirements.additionalNotes}
       <div class="additional-notes glass-panel">
-        <h4>{$t('requirements.notes')}</h4>
+        <h4>{$t("requirements.notes")}</h4>
         <ul>
           {#each requirements.additionalNotes as note}
             <li>{note}</li>
@@ -170,7 +178,7 @@
   }
 
   .additional-notes li::before {
-    content: '•';
+    content: "•";
     color: var(--primary-color);
     position: absolute;
     left: 0;
@@ -182,3 +190,4 @@
     }
   }
 </style>
+

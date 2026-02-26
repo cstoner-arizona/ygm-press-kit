@@ -1,13 +1,16 @@
 <script>
-  import { t } from '../../i18n/index.js';
-  
+  import { t } from "../../i18n/index.js";
+  import { assertUrl } from "../../utils/assertUrl.js";
+
   export let team = {};
 </script>
 
 <section class="team section">
   <div class="container">
-    <h2 class="section-title gradient-text text-center">{$t('sections.team')}</h2>
-    
+    <h2 class="section-title gradient-text text-center">
+      {$t("sections.team")}
+    </h2>
+
     {#if team.studio}
       <div class="studio-info glass-panel">
         <div class="studio-content">
@@ -22,7 +25,7 @@
           </div>
           {#if team.studio.logo}
             <div class="studio-logo">
-              <img src={team.studio.logo} alt={team.studio.name} />
+              <img src={assertUrl(team.studio.logo)} alt={team.studio.name} />
             </div>
           {/if}
         </div>
@@ -37,7 +40,7 @@
             <div class="member-card glass-card hover-lift">
               {#if member.avatar}
                 <div class="member-avatar">
-                  <img src={member.avatar} alt={member.name} />
+                  <img src={assertUrl(member.avatar)} alt={member.name} />
                 </div>
               {/if}
               <div class="member-info">
@@ -47,7 +50,12 @@
                 {#if member.social}
                   <div class="social-links">
                     {#each Object.entries(member.social) as [platform, url]}
-                      <a href={url} target="_blank" rel="noopener" class="social-link">
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener"
+                        class="social-link"
+                      >
                         {platform}
                       </a>
                     {/each}
@@ -62,7 +70,7 @@
 
     {#if team.specialThanks}
       <div class="special-thanks">
-        <h3 class="subsection-title">{$t('team.specialThanks')}</h3>
+        <h3 class="subsection-title">{$t("team.specialThanks")}</h3>
         <div class="thanks-grid">
           {#each team.specialThanks as thanks}
             <div class="thanks-item glass-card hover-lift">
@@ -241,3 +249,4 @@
     }
   }
 </style>
+

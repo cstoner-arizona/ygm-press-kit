@@ -1,13 +1,16 @@
 <script>
-  import { t } from '../../i18n/index.js';
-  
+  import { t } from "../../i18n/index.js";
+  import { assertUrl } from "../../utils/assertUrl.js";
+
   export let features = {};
 </script>
 
 <section class="features section">
   <div class="container">
-    <h2 class="section-title gradient-text text-center">{$t('sections.features')}</h2>
-    
+    <h2 class="section-title gradient-text text-center">
+      {$t("sections.features")}
+    </h2>
+
     {#if features.mainFeatures}
       <div class="main-features">
         <div class="features-grid">
@@ -15,7 +18,7 @@
             <div class="feature-card glass-card hover-lift">
               {#if feature.icon}
                 <div class="feature-icon">
-                  <img src={feature.icon} alt={feature.title} />
+                  <img src={assertUrl(feature.icon)} alt={feature.title} />
                 </div>
               {/if}
               <h3>{feature.title}</h3>
@@ -28,7 +31,7 @@
 
     {#if features.gameplayFeatures}
       <div class="gameplay-features">
-        <h3 class="subsection-title">{$t('features.gameplayFeatures')}</h3>
+        <h3 class="subsection-title">{$t("features.gameplayFeatures")}</h3>
         <div class="gameplay-grid">
           {#each features.gameplayFeatures as category}
             <div class="gameplay-category glass-card">
@@ -46,7 +49,7 @@
 
     {#if features.technicalFeatures}
       <div class="technical-features">
-        <h3 class="subsection-title">{$t('features.technicalFeatures')}</h3>
+        <h3 class="subsection-title">{$t("features.technicalFeatures")}</h3>
         <div class="technical-grid">
           {#each features.technicalFeatures as feature}
             <div class="technical-item glass-card hover-lift">
@@ -143,7 +146,7 @@
   }
 
   .feature-list li::before {
-    content: '▶';
+    content: "▶";
     color: var(--accent-color);
     position: absolute;
     left: 0;
@@ -178,3 +181,4 @@
     }
   }
 </style>
+
