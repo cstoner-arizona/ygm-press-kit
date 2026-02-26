@@ -1,20 +1,27 @@
 <script>
-  import { t } from '../../i18n/index.js';
-  
+  import { t } from "../../i18n/index.js";
+  import { assetUrl } from "../../utils/assetUrl.js";
+
   export let media = {};
 </script>
 
 <section class="videos section">
   <div class="container">
-    <h2 class="section-title gradient-text text-center">{$t('sections.videos')}</h2>
-    
+    <h2 class="section-title gradient-text text-center">
+      {$t("sections.videos")}
+    </h2>
+
     {#if media.videos}
       <div class="videos-grid">
         {#each media.videos as video}
           <div class="video-item glass-card hover-lift">
             <div class="video-container">
-              <video controls preload="metadata" poster={video.thumbnail}>
-                <source src={video.url} type="video/mp4">
+              <video
+                controls
+                preload="metadata"
+                poster={assetUrl(video.thumbnail)}
+              >
+                <source src={assetUrl(video.url)} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
@@ -81,3 +88,4 @@
     }
   }
 </style>
+
