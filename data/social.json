@@ -1,0 +1,27 @@
+{
+  "enabled": true,
+  "socialLinks": [
+    {
+      "platform": "X",
+      "handle": "@deadinternetgames",
+      "url": "https://twitter.com/",
+      "icon": "/assets/icons/twitter.png",
+      "followers": "1.2K",
+      "description": "Latest news, updates, and behind-the-scenes content"
+    },
+    {
+      "platform": "Discord",
+      "name": "Dead Internet Games Community",
+      "url": "https://discord.com/",
+      "icon": "/assets/icons/discord.svg",
+      "members": "8.2K",
+      "description": "Join our community for discussions, support, and events"
+    }
+  ],
+  "pressContact": {
+    "email": "press@deadinternetgames.com",
+    "mediaKit": "/assets/press/youve-got-mail.zip",
+    "responseTime": "24-48 hours",
+    "preferredContact": "Email"
+  }
+}

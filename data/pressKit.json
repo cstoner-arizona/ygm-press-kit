@@ -1,0 +1,132 @@
+{
+  "enabled": true,
+  "pressKitInfo": {
+    "lastUpdated": "2024-01-15",
+    "version": "2.1",
+    "downloadUrl": "/assets/press/youve-got-mail.zip",
+    "size": "256 MB"
+  },
+  "factSheet": {
+    "developer": "Dead Internet Games",
+    "publisher": "Independent",
+    "releaseDate": "June 12, 1997",
+    "platforms": [
+      "iOS",
+      "Android"
+    ],
+    "price": "$2.99 USD",
+    "genre": "Strategy, Simulation, Clicker, Casual",
+    "rating": "T (Teen and Up)",
+    "website": "https://example.com",
+    "contact": "press@deadinternetgames.com"
+  },
+  "downloadableAssets": {
+    "logos": [
+      {
+        "name": "Main Logo (PNG)",
+        "url": "/assets/press/logos/logo.png",
+        "size": "2048x512",
+        "fileSize": "125 KB"
+      },
+      {
+        "name": "Main Logo (SVG)",
+        "url": "/assets/press/logos/logo.svg",
+        "size": "Vector",
+        "fileSize": "15 KB"
+      },
+      {
+        "name": "Icon Only (PNG)",
+        "url": "/assets/press/logos/icon.png",
+        "size": "512x512",
+        "fileSize": "45 KB"
+      }
+    ],
+    "screenshots": [
+      {
+        "name": "Screenshot Pack (High-Res)",
+        "url": "/assets/press/screenshots/screenshots-hires.zip",
+        "count": "15 screenshots",
+        "resolution": "3840x2160",
+        "fileSize": "45 MB"
+      },
+      {
+        "name": "Screenshot Pack (Standard)",
+        "url": "/assets/press/screenshots/screenshots-standard.zip",
+        "count": "15 screenshots",
+        "resolution": "1920x1080",
+        "fileSize": "12 MB"
+      }
+    ],
+    "videos": [
+      {
+        "name": "Launch Trailer (4K)",
+        "url": "/assets/press/videos/launch-trailer-4k.mp4",
+        "duration": "2:30",
+        "resolution": "3840x2160",
+        "fileSize": "890 MB"
+      },
+      {
+        "name": "Launch Trailer (1080p)",
+        "url": "/assets/press/videos/launch-trailer-1080p.mp4",
+        "duration": "2:30",
+        "resolution": "1920x1080",
+        "fileSize": "156 MB"
+      },
+      {
+        "name": "Gameplay Footage B-Roll",
+        "url": "/assets/press/videos/gameplay-broll.mp4",
+        "duration": "5:00",
+        "resolution": "1920x1080",
+        "fileSize": "425 MB"
+      }
+    ],
+    "artworks": [
+      {
+        "name": "Key Art Collection",
+        "url": "/assets/press/artwork/key-art.zip",
+        "count": "8 artworks",
+        "resolution": "4096x4096",
+        "fileSize": "125 MB"
+      }
+    ],
+    "documents": [
+      {
+        "name": "Press Release",
+        "url": "/assets/press/documents/press-release.pdf",
+        "format": "PDF",
+        "fileSize": "2.1 MB"
+      },
+      {
+        "name": "Developer Bio & Credits",
+        "url": "/assets/press/documents/developer-bio.pdf",
+        "format": "PDF",
+        "fileSize": "1.8 MB"
+      }
+    ]
+  },
+  "contactInformation": {
+    "general": {
+      "email": "press@deadinternetgames.com",
+      "phone": "+90 (555) 123-4567",
+      "timezone": "TRT (UTC-3)"
+    },
+    "marketing": {
+      "name": "John Doe",
+      "role": "Community Manager",
+      "email": "john@example.com",
+      "twitter": "@johndoe"
+    },
+    "developer": {
+      "name": "Christopher Stoner",
+      "role": "Game Director",
+      "email": "cstoner@deadinternetgames.com"
+    }
+  },
+  "reviewGuidelines": {
+    "embargo": "No embargo - coverage welcome anytime",
+    "reviewCopies": "TestFlight (iOS) and Play Console (Android) available on request.",
+    "streamingPolicy": "Full game streaming and monetization allowed",
+    "contentWarnings": "Simulated Criminal Activity and Mild Language",
+    "accessibility": "Full subtitle support, colorblind-friendly UI"
+  }
+}
