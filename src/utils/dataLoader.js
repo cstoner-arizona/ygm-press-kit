@@ -2,7 +2,7 @@
 class DataLoader {
   constructor() {
     this.cache = new Map();
-    this.baseUrl = '/data/';
+    this.baseUrl = `${import.meta.env.BASE_URL}data/`;
   }
 
   // Load and cache JSON data
